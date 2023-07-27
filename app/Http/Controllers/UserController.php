@@ -201,8 +201,8 @@ class UserController extends Controller
                 $locker->update(["userId" => $newUser->id]);
                 return response()->json(['id' => $newUser->id], 200);
             } catch (\Exception $e) {
-                $response = $e->getMessage();
-                $httpstatus = 400;
+                $response = ['message' => 'getRepeatData:' . $e->getMessage()];
+                $httpstatus = 411;
             }
         } else {
             $response = "此置物櫃已被使用";
